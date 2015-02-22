@@ -1,0 +1,142 @@
+{
+    "ace": {
+        "@animatedScroll": true,
+        "@antialiasedfonts": true,
+        "@behavioursEnabled": true,
+        "@cursorStyle": "ace",
+        "@displayIndentGuides": true,
+        "@fadeFoldWidgets": true,
+        "@fontFamily": "Monaco, Menlo, Ubuntu Mono, Consolas, source-code-pro, monospace",
+        "@fontSize": "12",
+        "@highlightActiveLine": true,
+        "@highlightGutterLine": true,
+        "@highlightSelectedWord": true,
+        "@keyboardmode": "default",
+        "@mergeUndoDeltas": "off",
+        "@overwrite": false,
+        "@printMarginColumn": 80,
+        "@scrollPastEnd": "0.5",
+        "@scrollSpeed": "2",
+        "@selectionStyle": "line",
+        "@showFoldWidgets": true,
+        "@showGutter": true,
+        "@showInvisibles": false,
+        "@showPrintMargin": true,
+        "@theme": "ace/theme/cloud9_day",
+        "@useWrapMode": false,
+        "@wrapBehavioursEnabled": true,
+        "@wrapToView": true,
+        "cursorStyle": {
+            "json()": "smooth slim"
+        },
+        "custom-types": {
+            "json()": {
+                "settings": "javascript"
+            }
+        },
+        "statusbar": {
+            "@show": true
+        }
+    },
+    "breakpoints": {
+        "@active": true
+    },
+    "build": {
+        "@autobuild": false
+    },
+    "collab": {
+        "@showbubbles": true
+    },
+    "debug": {
+        "@autoshow": true,
+        "@pause": 0
+    },
+    "findinfiles": {
+        "@clear": true,
+        "@consolelaunch": false,
+        "@fullpath": true,
+        "@scrolldown": false
+    },
+    "format": {
+        "jsbeautify": {
+            "@braces": "end-expand",
+            "@jslinthappy": false,
+            "@keeparrayindentation": true,
+            "@preserveempty": true,
+            "@space_before_conditional": true,
+            "@unescape_strings": true
+        }
+    },
+    "general": {
+        "@animateui": true,
+        "@automerge": false,
+        "@autosave": true,
+        "@confirmexit": true,
+        "@confirmmerge": true,
+        "@preview-navigate": true,
+        "@preview-tree": true,
+        "@propose": true,
+        "@revealfile": true,
+        "@skin": "flat-light",
+        "@stripws": false,
+        "@treestyle": "default"
+    },
+    "key-bindings": {
+        "@platform": "auto",
+        "@preset": "default"
+    },
+    "language": {
+        "@continuousCompletion": true,
+        "@enterCompletion": true,
+        "@hints": true,
+        "@instanceHighlight": true,
+        "@overrideMultiselectShortcuts": true
+    },
+    "metadata": {
+        "@enabled": true,
+        "@undolimit": "100"
+    },
+    "openfiles": {
+        "@hidetree": false,
+        "@show": true
+    },
+    "output": {
+        "@backgroundColor": "#e0e5e7",
+        "@foregroundColor": "#333333",
+        "@keepOutput": false,
+        "@nosavequestion": true,
+        "@selectionColor": "#aebabf"
+    },
+    "preview": {
+        "@default": "preview.browser",
+        "@running_app": false
+    },
+    "projecttree": {
+        "@hiddenFilePattern": "*.pyc, __pycache__, .*",
+        "@scope": true,
+        "@showhidden": false
+    },
+    "runconfig": {
+        "@debug": true,
+        "@saveallbeforerun": true,
+        "@showruncfglist": false
+    },
+    "tabs": {
+        "@asterisk": true,
+        "@show": true,
+        "@title": true
+    },
+    "terminal": {
+        "@antialiasedfonts": true,
+        "@backgroundColor": "#eaf0f7",
+        "@blinking": true,
+        "@fontfamily": "Ubuntu Mono, Menlo, Consolas, monospace",
+        "@fontsize": "12",
+        "@foregroundColor": "#000000",
+        "@scrollback": "1000",
+        "@selectionColor": "#bed1e3"
+    },
+    "welcome": {
+        "@first": true
+    }
+}

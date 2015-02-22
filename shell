@@ -1,0 +1,1 @@
+docker run -p 8181:8181 -v `pwd`/user.settings:/root/.c9/user.settings -v `pwd`/..:/docker -w /docker --rm -it cloud9 /bin/bash
