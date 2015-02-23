@@ -21,6 +21,9 @@ RUN mv node* node && \
 ENV NODE_PATH /usr/local/lib/node_modules
 
 RUN apt-get install -y build-essential
+
+#Change last_commit hash as a cache buster
+ENV latest_commit be54b38a9c
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     ./scripts/install-sdk.sh
