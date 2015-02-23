@@ -1,0 +1,14 @@
+upstream cloud9 {
+	server localhost:8181;
+}
+
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server ipv6only=on;
+
+	location / {
+		auth_basic "Login";
+        	auth_basic_user_file /etc/nginx/htpasswd;
+        	proxy_pass http://cloud9;
+	}
+}
