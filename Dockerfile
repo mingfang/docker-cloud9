@@ -23,7 +23,7 @@ RUN mv node* node && \
 ENV NODE_PATH /usr/local/lib/node_modules
 
 #Change last_commit hash as a cache buster
-ENV latest_commit be54b38a9c
+ENV latest_commit e37ab66b36c1c5a5faa77a8e0f954454415a541c
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     ./scripts/install-sdk.sh
