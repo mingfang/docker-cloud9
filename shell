@@ -1,1 +1,1 @@
-docker run -p 8181:80 -v `pwd`/user.settings:/root/.c9/user.settings -v `pwd`/..:/docker -w /docker --rm -it cloud9 /bin/bash
+docker run -p 8181:80 -p 8443:443 -v `pwd`/user.settings:/root/.c9/user.settings -v `pwd`/..:/docker -w /docker --rm -it cloud9 /bin/bash

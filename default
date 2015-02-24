@@ -3,8 +3,11 @@ upstream cloud9 {
 }
 
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server ipv6only=on;
+	listen 80;
+        #SSL
+        listen 443 ssl;
+        ssl_certificate /etc/nginx/ssl/server.crt;
+        ssl_certificate_key /etc/nginx/ssl/server.key;
 
 	location / {
 		auth_basic "Login";
