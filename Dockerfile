@@ -22,8 +22,11 @@ RUN mv node* node && \
     ln -s /node/bin/npm /usr/local/bin/npm
 ENV NODE_PATH /usr/local/lib/node_modules
 
+#Gulp
+RUN npm install -g gulp
+
 #Change last_commit hash as a cache buster
-ENV latest_commit e37ab66b36c1c5a5faa77a8e0f954454415a541c
+ENV latest_commit 75dce9a13acdd3fe621aeb2222dd038739ba9254
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     ./scripts/install-sdk.sh
