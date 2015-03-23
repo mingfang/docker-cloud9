@@ -25,6 +25,10 @@ ENV NODE_PATH /usr/local/lib/node_modules
 #Gulp
 RUN npm install -g gulp
 
+#Docker client only
+RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
+    chmod +x /usr/local/bin/docker
+
 #Change last_commit hash as a cache buster
 ENV latest_commit 75dce9a13acdd3fe621aeb2222dd038739ba9254
 RUN git clone --depth 1 https://github.com/c9/core.git
