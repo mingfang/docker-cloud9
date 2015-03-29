@@ -16,7 +16,7 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y nginx
 
 #Node
-RUN wget -O - http://nodejs.org/dist/v0.10.35/node-v0.10.35-linux-x64.tar.gz | tar xz
+RUN wget -O - http://nodejs.org/dist/v0.12.1/node-v0.12.1-linux-x64.tar.gz | tar xz
 RUN mv node* node && \
     ln -s /node/bin/node /usr/local/bin/node && \
     ln -s /node/bin/npm /usr/local/bin/npm
@@ -30,7 +30,7 @@ RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/dock
     chmod +x /usr/local/bin/docker
 
 #Change last_commit hash as a cache buster
-ENV latest_commit 75dce9a13acdd3fe621aeb2222dd038739ba9254
+ENV latest_commit 2b98d36f59942b28f21835624e4b31c49c1e84fb
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     ./scripts/install-sdk.sh
