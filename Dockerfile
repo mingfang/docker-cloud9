@@ -16,7 +16,7 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y nginx
 
 #Node
-RUN wget -O - http://nodejs.org/dist/v0.12.1/node-v0.12.1-linux-x64.tar.gz | tar xz
+RUN wget -O - http://nodejs.org/dist/v0.12.4/node-v0.12.4-linux-x64.tar.gz | tar xz
 RUN mv node* node && \
     ln -s /node/bin/node /usr/local/bin/node && \
     ln -s /node/bin/npm /usr/local/bin/npm
@@ -29,10 +29,15 @@ RUN npm install -g gulp
 RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
     chmod +x /usr/local/bin/docker
 
+RUN npm install -g npm-check-updates
+RUN npm install -g slush
+RUN npm install -g slush-generator
+
 #Change last_commit hash as a cache buster
-ENV latest_commit 2b98d36f59942b28f21835624e4b31c49c1e84fb
+ENV latest_commit ef01bb068dfe2d5f55071ecf204227b355945a47
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
+    npm install && \
     ./scripts/install-sdk.sh
 
 #ssl
