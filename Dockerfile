@@ -22,19 +22,19 @@ RUN mv node* node && \
     ln -s /node/bin/npm /usr/local/bin/npm
 ENV NODE_PATH /usr/local/lib/node_modules
 
-#Gulp
-RUN npm install -g gulp
+#NPM Modules
+RUN npm install -g gulp npm-check-updates slush slush-generator
 
 #Docker client only
 RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
     chmod +x /usr/local/bin/docker
+#Compose
+RUN curl -L https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
+    chmod +x /usr/local/bin/docker-compose
 
-RUN npm install -g npm-check-updates
-RUN npm install -g slush
-RUN npm install -g slush-generator
 
 #Change last_commit hash as a cache buster
-ENV latest_commit ef01bb068dfe2d5f55071ecf204227b355945a47
+ENV latest_commit 02d1ba40ea1a92f37741e9ce97270217d473f2b7
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     npm install && \
