@@ -16,7 +16,7 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y nginx
 
 #Node
-RUN wget -O - http://nodejs.org/dist/v0.12.4/node-v0.12.4-linux-x64.tar.gz | tar xz
+RUN wget -O - http://nodejs.org/dist/v0.12.5/node-v0.12.5-linux-x64.tar.gz | tar xz
 RUN mv node* node && \
     ln -s /node/bin/node /usr/local/bin/node && \
     ln -s /node/bin/npm /usr/local/bin/npm
@@ -52,6 +52,12 @@ RUN mkdir -p /etc/nginx/ssl && \
 #Set your user:password
 RUN echo "user:`perl -le 'print crypt(\"password\", \"salt-hash\")'`" > /etc/nginx/htpasswd
 ADD default /etc/nginx/sites-enabled/default
+
+#NPM cache
+RUN git clone --depth 1 https://github.com/mixu/npm_lazy.git && \
+    cd npm_lazy && \
+    npm install && \
+    npm config set registry http://localhost:8080/
 
 #Add runit services
 ADD sv /etc/service 
