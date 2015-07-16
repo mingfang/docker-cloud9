@@ -53,6 +53,12 @@ RUN mkdir -p /etc/nginx/ssl && \
 RUN echo "user:`perl -le 'print crypt(\"password\", \"salt-hash\")'`" > /etc/nginx/htpasswd
 ADD default /etc/nginx/sites-enabled/default
 
+#NPM cache
+RUN git clone --depth 1 https://github.com/mixu/npm_lazy.git && \
+    cd npm_lazy && \
+    npm install && \
+    npm config set registry http://localhost:8080/
+
 #Add runit services
 ADD sv /etc/service 
 
