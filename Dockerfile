@@ -16,7 +16,7 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y nginx
 
 #Node
-RUN wget -O - http://nodejs.org/dist/v0.12.4/node-v0.12.4-linux-x64.tar.gz | tar xz
+RUN wget -O - http://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz | tar xz
 RUN mv node* node && \
     ln -s /node/bin/node /usr/local/bin/node && \
     ln -s /node/bin/npm /usr/local/bin/npm
@@ -29,12 +29,12 @@ RUN npm install -g gulp npm-check-updates slush slush-generator
 RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
     chmod +x /usr/local/bin/docker
 #Compose
-RUN curl -L https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
+RUN curl -L https://github.com/docker/compose/releases/download/1.3.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
     chmod +x /usr/local/bin/docker-compose
 
 
 #Change last_commit hash as a cache buster
-ENV latest_commit 02d1ba40ea1a92f37741e9ce97270217d473f2b7
+ENV latest_commit 9ce99fb2f0fc45fecc5448b28301e3258835383e
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     npm install && \
