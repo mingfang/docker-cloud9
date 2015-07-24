@@ -34,7 +34,7 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.3.2/docker-com
 
 
 #Change last_commit hash as a cache buster
-ENV latest_commit 9ce99fb2f0fc45fecc5448b28301e3258835383e
+ENV latest_commit eda61cfd081af1bc2c578c83e8f3625269286fae
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     npm install && \
