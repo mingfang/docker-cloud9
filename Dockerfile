@@ -30,17 +30,19 @@ RUN npm install -g gulp npm-check-updates slush slush-generator
 #Docker client only
 RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
     chmod +x /usr/local/bin/docker
-#Compose
-RUN curl -L https://github.com/docker/compose/releases/download/1.3.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && \
-    chmod +x /usr/local/bin/docker-compose
-
 
 #Change last_commit hash as a cache buster
-ENV latest_commit 90666adf0562602d15e46dd5adb4038fd3bd81bc
+ENV latest_commit d2d3761d127b862604fad3cf58d75258913cd4f5
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     npm install && \
     ./scripts/install-sdk.sh
+
+#NPM cache
+RUN git clone --depth 1 https://github.com/mixu/npm_lazy.git && \
+    cd npm_lazy && \
+    npm install && \
+    npm config set registry http://localhost:8080/
 
 #ssl
 RUN mkdir -p /etc/nginx/ssl && \
@@ -54,12 +56,6 @@ RUN mkdir -p /etc/nginx/ssl && \
 #Set your user:password
 RUN echo "user:`perl -le 'print crypt(\"password\", \"salt-hash\")'`" > /etc/nginx/htpasswd
 ADD default /etc/nginx/sites-enabled/default
-
-#NPM cache
-RUN git clone --depth 1 https://github.com/mixu/npm_lazy.git && \
-    cd npm_lazy && \
-    npm install && \
-    npm config set registry http://localhost:8080/
 
 #Add runit services
 ADD sv /etc/service 
