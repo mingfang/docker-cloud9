@@ -32,7 +32,7 @@ RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/dock
     chmod +x /usr/local/bin/docker
 
 #Change last_commit hash as a cache buster
-ENV latest_commit d2d3761d127b862604fad3cf58d75258913cd4f5
+ENV latest_commit 0edfc77b8520a9083c8c71a47a39d2da2eb6bf79
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     npm install && \
