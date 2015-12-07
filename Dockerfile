@@ -38,12 +38,6 @@ RUN cd core && \
     npm install && \
     ./scripts/install-sdk.sh
 
-#NPM cache
-RUN git clone --depth 1 https://github.com/mixu/npm_lazy.git && \
-    cd npm_lazy && \
-    npm install && \
-    npm config set registry http://localhost:8080/
-
 #ssl
 RUN mkdir -p /etc/nginx/ssl && \
     cd /etc/nginx/ssl && \
