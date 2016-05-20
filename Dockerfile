@@ -1,24 +1,25 @@
 FROM ubuntu:14.04
- 
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update
+  
+ENV DEBIAN_FRONTEND=noninteractive \
+    LANG=en_US.UTF-8 \
+    TERM=xterm
 RUN locale-gen en_US en_US.UTF-8
-ENV LANG en_US.UTF-8
 RUN echo "export PS1='\e[1;31m\]\u@\h:\w\\$\[\e[0m\] '" >> /root/.bashrc
+RUN apt-get update
 
-#Runit
+# Runit
 RUN apt-get install -y runit 
 CMD export > /etc/envvars && /usr/sbin/runsvdir-start
 RUN echo 'export > /etc/envvars' >> /root/.bashrc
 
-#Utilities
+# Utilities
 RUN apt-get install -y vim less net-tools inetutils-ping wget curl git telnet nmap socat dnsutils netcat tree htop unzip sudo software-properties-common jq psmisc
 
 RUN apt-get install -y build-essential
 RUN apt-get install -y nginx
 
 #Node
-RUN wget -O - http://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz | tar xz
+RUN wget -O - https://nodejs.org/download/release/v0.12.13/node-v0.12.13-linux-x64.tar.gz | tar xz
 RUN mv node* node && \
     ln -s /node/bin/node /usr/local/bin/node && \
     ln -s /node/bin/npm /usr/local/bin/npm
@@ -27,12 +28,8 @@ ENV NODE_PATH /usr/local/lib/node_modules
 #NPM Modules
 RUN npm install -g gulp npm-check-updates slush slush-generator
 
-#Docker client only
-RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
-    chmod +x /usr/local/bin/docker
-
 #Change last_commit hash as a cache buster
-ENV latest_commit 641d6fc3769e4b0ac04ab4d9a32b19454d460664
+ENV latest_commit b70a6ab4752b50f18962b12d01cd6044b84c8316
 RUN git clone --depth 1 https://github.com/c9/core.git
 RUN cd core && \
     npm install && \
@@ -51,6 +48,7 @@ RUN mkdir -p /etc/nginx/ssl && \
 RUN echo "user:`perl -le 'print crypt(\"password\", \"salt-hash\")'`" > /etc/nginx/htpasswd
 ADD default /etc/nginx/sites-enabled/default
 
-#Add runit services
-ADD sv /etc/service 
-
+# Add runit services
+COPY sv /etc/service 
+ARG BUILD_INFO
+LABEL BUILD_INFO=$BUILD_INFO
